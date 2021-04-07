@@ -1,5 +1,8 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {BaseEntity} from './base-entity.model';
+import {Users} from './users.model';
+import {Tenants} from './tenants.model';
+import {Roles} from './roles.model';
 
 @model({
   settings: {idInjection: false, postgresql: {schema: 'pgdb', table: 'user_tenants'}}
@@ -12,25 +15,34 @@ export class UserTenants extends BaseEntity {
   })
   id?: number;
 
-  @property({
-    type: 'number',
-    scale: 0,
-    postgresql: {columnName: 'user_id', dataType: 'integer', dataLength: null, dataPrecision: null, dataScale: 0, nullable: 'YES'},
-  })
+  @belongsTo(
+    () => Users,
+    {keyFrom: 'user_id', name: 'user_id'},
+    {
+      name: 'user_id',
+      required: true,
+    },
+  )
   userId?: number;
 
-  @property({
-    type: 'number',
-    scale: 0,
-    postgresql: {columnName: 'tenant_id', dataType: 'integer', dataLength: null, dataPrecision: null, dataScale: 0, nullable: 'YES'},
-  })
+  @belongsTo(
+    () => Tenants,
+    {keyFrom: 'tenant_id', name: 'tenant_id'},
+    {
+      name: 'tenant_id',
+      required: true,
+    },
+  )
   tenantId?: number;
 
-  @property({
-    type: 'number',
-    scale: 0,
-    postgresql: {columnName: 'role_id', dataType: 'integer', dataLength: null, dataPrecision: null, dataScale: 0, nullable: 'YES'},
-  })
+  @belongsTo(
+    () => Roles,
+    {keyFrom: 'role_id', name: 'role_id'},
+    {
+      name: 'role_id',
+      required: true,
+    },
+  )
   roleId?: number;
 
   @property({

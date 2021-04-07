@@ -1,5 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {UserModifiableEntity} from './user-modifiable-entity.model';
+import {UserTenants} from './user-tenants.model';
 
 @model({
   settings: {
@@ -15,11 +16,14 @@ export class UserTenantPermissions extends UserModifiableEntity {
   })
   id?: number;
 
-  @property({
-    type: 'number',
-    scale: 0,
-    postgresql: {columnName: 'user_tenant_id', dataType: 'integer', dataLength: null, dataPrecision: null, dataScale: 0, nullable: 'YES'},
-  })
+  @belongsTo(
+    () => UserTenants,
+    {keyFrom: 'user_tenant_id', name: 'user_tenant_id'},
+    {
+      name: 'user_tenant_id',
+      required: true,
+    },
+  )
   userTenantId?: number;
 
   @property({
