@@ -1,7 +1,8 @@
 import {Entity, model, property} from '@loopback/repository';
+import {BaseEntity} from './base-entity.model';
 
 @model({settings: {idInjection: false, postgresql: {schema: 'pgdb', table: 'roles'}}})
-export class Roles extends Entity {
+export class Roles extends BaseEntity {
   @property({
     type: 'number',
     scale: 0,
@@ -14,24 +15,6 @@ export class Roles extends Entity {
     postgresql: {columnName: 'name', dataType: 'text', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   name?: string;
-
-  @property({
-    type: 'date',
-    postgresql: {columnName: 'created_on', dataType: 'date', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  createdOn?: string;
-
-  @property({
-    type: 'date',
-    postgresql: {columnName: 'modified_on', dataType: 'date', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  modifiedOn?: string;
-
-  @property({
-    type: 'boolean',
-    postgresql: {columnName: 'deleted', dataType: 'boolean', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  deleted?: boolean;
 
   @property({
     type: 'string',

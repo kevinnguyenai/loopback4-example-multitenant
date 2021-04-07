@@ -3,3 +3,5 @@ export * from './roles.model';
 export * from './tenants.model';
 export * from './user-tenants.model';
 export * from './users.model';
+export * from './auth-clients.model';
+export * from './user-modifiable-entity.model';

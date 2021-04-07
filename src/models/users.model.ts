@@ -1,7 +1,8 @@
 import {Entity, model, property} from '@loopback/repository';
+import {UserModifiableEntity} from './user-modifiable-entity.model';
 
 @model({settings: {idInjection: false, postgresql: {schema: 'pgdb', table: 'users'}}})
-export class Users extends Entity {
+export class Users extends UserModifiableEntity {
   @property({
     type: 'number',
     required: true,
@@ -52,38 +53,6 @@ export class Users extends Entity {
     postgresql: {columnName: 'password', dataType: 'text', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
   })
   password?: string;
-
-  @property({
-    type: 'date',
-    postgresql: {columnName: 'created_on', dataType: 'date', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  createdOn?: string;
-
-  @property({
-    type: 'date',
-    postgresql: {columnName: 'modified_on', dataType: 'date', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  modifiedOn?: string;
-
-  @property({
-    type: 'number',
-    scale: 0,
-    postgresql: {columnName: 'created_by', dataType: 'integer', dataLength: null, dataPrecision: null, dataScale: 0, nullable: 'YES'},
-  })
-  createdBy?: number;
-
-  @property({
-    type: 'number',
-    scale: 0,
-    postgresql: {columnName: 'modified_by', dataType: 'integer', dataLength: null, dataPrecision: null, dataScale: 0, nullable: 'YES'},
-  })
-  modifiedBy?: number;
-
-  @property({
-    type: 'boolean',
-    postgresql: {columnName: 'deleted', dataType: 'boolean', dataLength: null, dataPrecision: null, dataScale: null, nullable: 'YES'},
-  })
-  deleted?: boolean;
 
   @property({
     type: 'number',
