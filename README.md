@@ -3,6 +3,8 @@
 This application is generated using [LoopBack 4 CLI](https://loopback.io/doc/en/lb4/Command-line-interface.html) with the
 [initial project layout](https://loopback.io/doc/en/lb4/Loopback-application-layout.html).
 
+[![Database per tenant](https://github.com/microsoft/WingtipTicketsSaaS-DbPerTenant/blob/master/Documentation/AppVersions.PNG)](http://loopback.io/)
+
 ## Install dependencies
 
 By default, dependencies were installed when this application was generated.
