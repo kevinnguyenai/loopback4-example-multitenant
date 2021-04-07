@@ -1,6 +1,6 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
 import {juggler} from '@loopback/repository';
-import * as config from './pgdb.datasource.json';
+import * as config from './pgdb.datasource.config.json';
 /*
 const config = {
   name: 'pgdb',
